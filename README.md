@@ -3,10 +3,14 @@ Dockerfile for **lgogdownloader** with **Unraid**.
 
 Download in **Unraid** via **Community Applications**.
 
+Set the below paths via extra "path" variable:
+
+["/home/user/.cache/lgogdownloader", "", "/home/user/downloads"]
+
 Set the paths and following options: \
-`cache` set to `/mnt/user/appdata/lgogdownloader/cache/` \
-`config` set to `/mnt/user/appdata/lgogdownloader/config/` \
-`downloads` set to `/mnt/user/GOG/` (create share in advance)\
+`cache` set to `/mnt/user/appdata/lgogdownloader/cache/` + `/home/user/.cache/lgogdownloader` \
+`config` set to `/mnt/user/appdata/lgogdownloader/config/` + `/home/user/.config/lgogdownloader` \
+`downloads` set to `/home/user/downloads` + `/mnt/user/Games_Network/GoG_Downloader/_downloads/` (create share in advance)\
 Set `Extra Parameters` to: `-it` and `Console shell command` to `Bash`. 
 
 Log into docker container via SSH shell `docker attach lgogdownloader` on Unraid \
@@ -21,6 +25,12 @@ Login to GOG via: \
 
 You can set more options, for example see the following command: \
 `lgogdownloader --language=de,en --platform=all --save-serials --threads 10 --info-threads 10 --save-config`
+
+create downloads.sh file via unraid terminal with the following content:
+
+```bash
+lgogdownloader --download --include all --ignore-dlc-count --no-platform-detection --platform w+l --language en --save-changelogs --save-serials --xml-directory 'aaaMetadata'
+```
 
 See `lgogdownloader --help` for more information on this.
 
