@@ -24,7 +24,7 @@ Login to GOG via: \
 `lgogdownloader --directory=/home/user/downloads --save-config`
 
 You can set more options, for example see the following command: \
-`lgogdownloader --language=de,en --platform=all --save-serials --threads 10 --info-threads 10 --save-config`
+`lgogdownloader --language=de,en --platform=all --save-serials --threads 16 --info-threads 16 --save-config`
 
 create downloads.sh file via unraid terminal with the following content:
 
